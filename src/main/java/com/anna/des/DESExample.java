@@ -41,6 +41,8 @@ public class DESExample extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			
+			
 			// Chave de desencriptação do websevice cadastrado no AnnA
 			String decKey = "NV2M5TnBxtHznZiBF85yNEP1FbnPPqvD"; // Deve ser alterada conforme o cadastro do Web Service
 
@@ -85,12 +87,11 @@ public class DESExample extends HttpServlet {
 			// anotherVar
 			finalResponse += "{";
 			finalResponse += "\"PropName\":\"Phrase\",";
-			finalResponse += "\"PropValue\":\"" + decrypted + "\"";
+			finalResponse += "\"PropValue\":\"O valor de AnotherVar é : " + decrypted + "\"";
 			finalResponse += "},";
 
 			finalResponse += "]";
 			finalResponse += "}]";
-			
 			
 			// ... Fim do código do Web Service.
 			// Encriptação do JSON de resposta ao AnnA
@@ -108,11 +109,12 @@ public class DESExample extends HttpServlet {
 			// Encriptado"
 			finalResponse = finalResponse + ivRecebido + novoIvEncriptado;
 
+	
 			// Envio das informações ao AnnA
 			PrintWriter out = response.getWriter();
-			out.print("O valor de anotherVar é: " + finalResponse);
+			out.print(finalResponse);
 
-		} catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException
+		}catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException
 				| InvalidAlgorithmParameterException | UnsupportedEncodingException | IllegalBlockSizeException
 				| BadPaddingException ex) {
 			Logger.getLogger(DESExample.class.getName()).log(Level.SEVERE, null, ex);
