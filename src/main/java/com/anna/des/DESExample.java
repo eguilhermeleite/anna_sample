@@ -74,7 +74,7 @@ public class DESExample extends HttpServlet {
 			// desencriptado da variável enviada no POST 'AnotherVar' configurada no fluxo
 			// Para conhecer outros tipos de containers consulte a documentação
 			String finalResponse = "[{";
-			finalResponse += "\"PropName\":\"RESPOSTA\",";
+			finalResponse += "\"PropName\":\"Container001\",";
 			finalResponse += "\"PropValue\":";
 			finalResponse += "[";
 			finalResponse += "{\"";
@@ -110,7 +110,7 @@ public class DESExample extends HttpServlet {
 
 			// Envio das informações ao AnnA
 			PrintWriter out = response.getWriter();
-			out.print(finalResponse);
+			out.print("O valor de anotherVar é: " + finalResponse);
 
 		} catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException
 				| InvalidAlgorithmParameterException | UnsupportedEncodingException | IllegalBlockSizeException
